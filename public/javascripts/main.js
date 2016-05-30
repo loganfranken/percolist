@@ -1,3 +1,5 @@
+var coffeeTableTemplate = $('#coffee-table-template').html();
+
 geoid.getPosition().then(function(position) {
 
     var lat = position.coords.latitude;
@@ -8,13 +10,18 @@ geoid.getPosition().then(function(position) {
     map.longitude = lon;
 
     fetch('/locations?lat=' + lat + '&lon=' + lon).then(function(response) {
-      response.json().then(function(json) {
-        console.log(json);
+      response.json().then(function(locations) {
+
+        console.log(locations);
+
+        var coffeeTable = Mustache.render(coffeeTableTemplate, { locations: locations });
+        $('.coffee-list').html(coffeeTable);
+
       });
     });
 
 }).catch(function(err) {
 
-  // An error occurred while retrieving the position
+  console.log(err);
 
 });

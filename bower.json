@@ -14,7 +14,9 @@
     "tests"
   ],
   "dependencies": {
+    "bootstrap": "~3.3.6",
     "geoid": "~0.2.1",
-    "google-map": "GoogleWebComponents/google-map#~1.1.10"
+    "google-map": "GoogleWebComponents/google-map#~1.1.10",
+    "mustache.js": "mustache#~2.2.1"
   }
 }

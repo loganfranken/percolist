@@ -1,12 +1,14 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+google-map
+{
+  height: 18.75em;
+  width: 100%;
 }
 
-a {
-  color: #00B7FF;
-}
-
-google-map {
-    height: 600px;
+@media (min-width: 50em)
+{
+  google-map
+  {
+    height: 31.25em;
+    margin-top: 2em;
   }
+}
