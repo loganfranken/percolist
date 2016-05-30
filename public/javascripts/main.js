@@ -1,15 +1,16 @@
 geoid.getPosition().then(function(position) {
 
-    // Position retrieved successfully
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
 
     var map = document.querySelector('google-map');
-
     map.latitude = lat;
     map.longitude = lon;
-    map.addEventListener('google-map-ready', function(e) {
-      alert('Map loaded!');
+
+    fetch('/locations?lat=' + lat + '&lon=' + lon).then(function(response) {
+      response.json().then(function(json) {
+        console.log(json);
+      });
     });
 
 }).catch(function(err) {
