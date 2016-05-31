@@ -31,6 +31,26 @@ geoid.getPosition().then(function(position) {
         var coffeeMap = Mustache.render(coffeeMapTemplate, mapData);
         $('.coffee-map').html(coffeeMap);
 
+        // Enable selection of locations on the map
+        var markers = document.querySelectorAll('google-map-marker');
+
+        for(var i=0; i<markers.length; i++)
+        {
+          var marker = markers[i];
+
+          marker.clickEvents = true;
+          marker.addEventListener('google-map-marker-click', function(e) {
+
+            // Remove the currently highlighted row
+            $('.coffee-list tr.success').removeClass('success');
+
+            // Highlight the row with the selected coffee shop
+            var id = e.srcElement.id;
+            $('.coffee-list tr[data-id=' + id + ']').addClass('success');
+
+          });
+        }
+
       });
     });
 
@@ -38,10 +58,11 @@ geoid.getPosition().then(function(position) {
   console.log(err);
 });
 
+// Handle "Check In" button event
 $('.coffee-list').on('click', '.btn-check-in', function() {
 
   var $this = $(this);
-  var id = $this.attr('data-id');
+  var id = $this.closest('tr').attr('data-id');
 
   var timestamp = moment().format('MMMM Do YYYY, h:mm:ss a');
 

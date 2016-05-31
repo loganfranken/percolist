@@ -18,11 +18,11 @@ block content
             th Visited
         tbody
           | {{#locations}}
-          tr
+          tr(data-id='{{id}}')
             td {{name}}
             td
               | {{^visited}}
-              button(type='button', class='btn btn-primary btn-check-in', data-id='{{id}}') Check In
+              button(type='button', class='btn btn-primary btn-check-in') Check In
               | {{/visited}}
               | {{#visited}}
               {{visited}}
@@ -32,5 +32,5 @@ block content
     script(id='coffee-map-template', type='x-tmpl-mustache')
       google-map(zoom='15', latitude='{{latitude}}', longitude='{{longitude}}')
         | {{#locations}}
-        google-map-marker(latitude='{{latitude}}', longitude='{{longitude}}')
+        google-map-marker(latitude='{{latitude}}', longitude='{{longitude}}', id='{{id}}')
         | {{/locations}}
