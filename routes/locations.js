@@ -1,4 +1,3 @@
-var config = require('./../config');
 var express = require('express');
 var router = express.Router();
 var Yelp = require("yelp");
@@ -11,10 +10,10 @@ router.get('/', function(req, res, next) {
   var lon = req.query.lon;
 
   var yelp = new Yelp({
-    consumer_key: config.yelpConsumerKey,
-    consumer_secret: config.yelpConsumerSecret,
-    token: config.yelpToken,
-    token_secret: config.yelpTokenSecret
+    consumer_key: process.env.YELP_CONSUMER_KEY,
+    consumer_secret: process.env.YELP_CONSUMER_SECRET,
+    token: process.env.YELP_TOKEN,
+    token_secret: process.env.YELP_TOKEN_SECRET
   });
 
   yelp.search({term: "coffee", ll: lat + "," + lon}, function(error, data) {
