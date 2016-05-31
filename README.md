@@ -18,7 +18,7 @@ could share functionality across systems? Across institutions?
 
 ## Demo
 
-[https://percolist.herokuapp.com/](View Demo)
+[View Demo](https://percolist.herokuapp.com/)
 
 ## Open-Source Projects Used
 
