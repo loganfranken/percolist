@@ -24,6 +24,7 @@ could share functionality across systems? Across institutions?
 
 * [Bootstrap](https://github.com/twbs/bootstrap)
 * [Express](https://github.com/expressjs/express)
+* [Fetch Polyfill](https://github.com/github/fetch)
 * [Geoid](https://github.com/loganfranken/geoid)
 * [Google Maps Web Component](https://github.com/GoogleWebComponents/google-map)
 * [Jade](https://github.com/jadejs/jade)
