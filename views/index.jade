@@ -3,7 +3,8 @@ extends layout
 block content
   div(class='row')
     div(class='col-sm-6')
-      google-map(zoom='15')
+      div(class='coffee-map')
+        p Loading map...
     div(class='col-sm-6')
       h1 Percolist
       div(class='coffee-list')
@@ -14,8 +15,17 @@ block content
         thead
           tr
             th Name
+            th Last Visited
         tbody
           | {{#locations}}
           tr
             td {{name}}
+            td
+              span(class='label label-default') Never Visited
           | {{/locations}}
+
+    script(id='coffee-map-template', type='x-tmpl-mustache')
+      google-map(zoom='15', latitude='{{latitude}}', longitude='{{longitude}}')
+        | {{#locations}}
+        google-map-marker(latitude='{{location.coordinate.latitude}}', longitude='{{location.coordinate.longitude}}')
+        | {{/locations}}
