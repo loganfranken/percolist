@@ -3,6 +3,8 @@ var express = require('express');
 var router = express.Router();
 var Yelp = require("yelp");
 
+var MAX_LOCATIONS = 10;
+
 router.get('/', function(req, res, next) {
 
   var lat = req.query.lat;
@@ -16,7 +18,27 @@ router.get('/', function(req, res, next) {
   });
 
   yelp.search({term: "coffee", ll: lat + "," + lon}, function(error, data) {
-    res.json(data.businesses);
+
+    var locations = [];
+
+    data.businesses.forEach(function(business) {
+
+      if(locations.length >= MAX_LOCATIONS)
+      {
+        return;
+      }
+
+      locations.push({
+        id: business.id,
+        name: business.name,
+        latitude: business.location.coordinate.latitude,
+        longitude: business.location.coordinate.longitude
+      });
+
+    });
+
+    res.json(locations);
+
   });
 
 });

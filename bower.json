@@ -17,6 +17,7 @@
     "bootstrap": "~3.3.6",
     "geoid": "~0.2.1",
     "google-map": "GoogleWebComponents/google-map#~1.1.10",
+    "moment": "~2.13.0",
     "mustache.js": "mustache#~2.2.1"
   }
 }

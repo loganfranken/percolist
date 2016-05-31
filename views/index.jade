@@ -15,17 +15,22 @@ block content
         thead
           tr
             th Name
-            th Last Visited
+            th Visited
         tbody
           | {{#locations}}
           tr
             td {{name}}
             td
-              span(class='label label-default') Never Visited
+              | {{^visited}}
+              button(type='button', class='btn btn-primary btn-check-in', data-id='{{id}}') Check In
+              | {{/visited}}
+              | {{#visited}}
+              {{visited}}
+              | {{/visited}}
           | {{/locations}}
 
     script(id='coffee-map-template', type='x-tmpl-mustache')
       google-map(zoom='15', latitude='{{latitude}}', longitude='{{longitude}}')
         | {{#locations}}
-        google-map-marker(latitude='{{location.coordinate.latitude}}', longitude='{{location.coordinate.longitude}}')
+        google-map-marker(latitude='{{latitude}}', longitude='{{longitude}}')
         | {{/locations}}
